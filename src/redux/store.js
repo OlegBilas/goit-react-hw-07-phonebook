@@ -4,7 +4,7 @@ import { filterReducer } from './filter/filterSlice';
 
 export const store = configureStore({
   reducer: {
-    book: contactsReducer,
+    contacts: contactsReducer,
     filter: filterReducer,
   },
 });
