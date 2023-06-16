@@ -7,35 +7,6 @@ import { addContact, deleteContact, fetchContacts } from 'redux/operations';
 //   { id: 'id-2', name: 'Hermione Kline', phone: '443-89-12' },
 //   { id: 'id-1', name: 'Rosie Simpson', phone: '459-12-56' },
 // ];
-function handleFetchContacts(state, action) {
-  state.items = action.payload.sort((a, b) => a.name.localeCompare(b.name));
-}
-
-function handleAddContact(state, action) {
-  state.items = [action.payload, ...state.items].sort((a, b) =>
-    a.name.localeCompare(b.name)
-  );
-}
-function handleDeleteContact(state, action) {
-  state.items = state.items
-    .filter(item => item.id !== action.payload.id)
-    .sort((a, b) => a.name.localeCompare(b.name));
-}
-
-function handlePending(state, action) {
-  state.isLoading = true;
-  state.error = null;
-}
-
-function handleFulfilled(state, action) {
-  state.isLoading = false;
-  state.error = null;
-}
-
-function handleRejected(state, action) {
-  state.isLoading = false;
-  state.error = action.payload;
-}
 
 const STATUS = {
   FULFILLED: 'fulfilled',
@@ -75,5 +46,35 @@ const contactsSlice = createSlice({
       );
   },
 });
+
+function handleFetchContacts(state, action) {
+  state.items = action.payload.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function handleAddContact(state, action) {
+  state.items = [action.payload, ...state.items].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+}
+function handleDeleteContact(state, action) {
+  state.items = state.items
+    .filter(item => item.id !== action.payload.id)
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function handlePending(state, action) {
+  state.isLoading = true;
+  state.error = null;
+}
+
+function handleFulfilled(state, action) {
+  state.isLoading = false;
+  state.error = null;
+}
+
+function handleRejected(state, action) {
+  state.isLoading = false;
+  state.error = action.payload;
+}
 
 export const contactsReducer = contactsSlice.reducer;
