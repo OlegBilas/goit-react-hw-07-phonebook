@@ -32,9 +32,9 @@ export const Item = styled.li`
 `;
 
 export const Name = styled.span`
-  width: 160px;
+  width: 240px;
 `;
 
 export const Number = styled.span`
-  width: 80px;
+  width: 120px;
 `;

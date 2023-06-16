@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Form, Label, Input } from './ContactForm.styled';
@@ -23,10 +23,10 @@ export default function ContactForm() {
   };
 
   const handleSubmit = e => {
+    e.preventDefault();
     if (contacts.find(({ name }) => name === contact.name)) {
       return toast.error(`${contact.name} is already in contacts`);
     }
-    e.preventDefault();
     dispatch(addContact({ name: contact.name, phone: contact.phone }));
     setContact(initialState);
   };
@@ -35,7 +35,6 @@ export default function ContactForm() {
   const idphone = nanoid();
   return (
     <Form onSubmit={handleSubmit}>
-      <ToastContainer />
       <Label htmlFor={idName}>Name</Label>
       <Input
         id={idName}

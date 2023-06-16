@@ -8,10 +8,14 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectError, selectIsLoading } from 'redux/selectors';
 import Loader from './Loader/Loader';
+import { ToastContainer, toast } from 'react-toastify';
 
 export function App() {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+  if (error) {
+    toast.error(`Somethitg has went wrong. The reason is: ` + error);
+  }
 
   const dispatch = useDispatch();
 
@@ -21,13 +25,13 @@ export function App() {
 
   return (
     <Wrapper>
+      <ToastContainer />
       <TitlePhonebook>Phonebook</TitlePhonebook>
       <ContactForm />
       <TitleContacts>Contacts</TitleContacts>
       <Filter />
       {isLoading && <Loader />}
       {!isLoading && !error && <ContactList />}
-      {error && <p>Somethitg has went wrong. Try again!</p>}
     </Wrapper>
   );
 }
