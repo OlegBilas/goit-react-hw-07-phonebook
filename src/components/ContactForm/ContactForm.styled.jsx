@@ -6,7 +6,7 @@ export const Form = styled.form`
   padding: 20px;
   border: 1px solid #000000;
   border-radius: 4px;
-  background-color: #efbbbb;
+  background-color: #dbe1cc;
 `;
 
 export const Label = styled.label`
