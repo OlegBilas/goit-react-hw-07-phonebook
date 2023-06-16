@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const List = styled.ul`
   max-width: calc(100% - 40px);
-  padding: 0 20px 20px;
+  padding: 0;
 `;
 
 export const Item = styled.li`

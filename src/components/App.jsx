@@ -2,7 +2,7 @@ import ContactForm from 'components/ContactForm/ContactForm';
 import Filter from 'components/Filter/Filter';
 import ContactList from 'components/ContactList/ContactList';
 
-import { Wrapper, TitlePhonebook, TitleContacts } from './App.styled';
+import { Section, Wrapper, TitlePhonebook, TitleContacts } from './App.styled';
 import { fetchContacts } from 'redux/operations';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,14 +24,16 @@ export function App() {
   }, [dispatch]);
 
   return (
-    <Wrapper>
+    <Section>
       <ToastContainer />
       <TitlePhonebook>Phonebook</TitlePhonebook>
       <ContactForm />
-      <TitleContacts>Contacts</TitleContacts>
-      <Filter />
-      {isLoading && <Loader />}
-      {!isLoading && !error && <ContactList />}
-    </Wrapper>
+      <Wrapper>
+        <TitleContacts>Contacts</TitleContacts>
+        <Filter />
+        {isLoading && <Loader />}
+        {!isLoading && !error && <ContactList />}
+      </Wrapper>
+    </Section>
   );
 }
