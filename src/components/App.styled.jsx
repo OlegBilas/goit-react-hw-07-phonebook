@@ -11,7 +11,7 @@ export const Section = styled.section`
   background-image: linear-gradient(
       to left,
       rgba(47, 48, 58, 0.1),
-      rgba(47, 48, 58, 0.4)
+      rgba(47, 48, 58, 0.5)
     ),
     url(${img});
 `;
